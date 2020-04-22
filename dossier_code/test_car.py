@@ -9,3 +9,4 @@ class CarTest(unittest.TestCase):
 
     def test_compare_color(self):
         self.assertEqual(False, Car("rouge").compare_color("bleu"))
+test
