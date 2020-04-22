@@ -3,6 +3,6 @@
 
 *Membres du groupe:*
 
-- Homer Simpson
-- Ned Flanders
-- Otto Bus
+- Andrea LECORDIX
+- Sacha REUSA
+- Bastien AGULLO
