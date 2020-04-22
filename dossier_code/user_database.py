@@ -6,14 +6,16 @@ class UserDatabase:
         self.users = users
 
     def get_nb_users(self):
-
-        return f"Le nombre d'users est de :  {self.id}"
+        users = 0
+        for users in users.json :
+            users += 1
+        print("Le nombre de users est", {self.id})
 
     def load(self):
-        with open('users.json', 'r') as json_file:
-            users_json = json.load(json_file)
+        with open('users.json', 'r') as read_file:
+            users_json = json.load(read_file)
             for user in users_json:
-                self.users.append(User(user.get("id"), user.get("nom"),user.get("prenom"),user.get("profession"),user.get("age"),user.get("sexe"),user.get("marie"),user.get("hobbies")
+                self.users.append(User(user.get("id"), user.get("nom"),user.get("prenom"),user.get("profession"), user.get("age"), user.get("sexe"), user.get("marie"), user.get("hobbies")))
 
     with open('users.json', 'r') as read_file:
         datas = json.load(read_file)
@@ -42,5 +44,3 @@ class User:
         self.gender = gender
         self.hobbies = hobbies
 
-
-ddd
