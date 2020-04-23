@@ -48,7 +48,7 @@ class UserDatabase:
         users = 0
         for u in users_list:
             users += 1
-        print("Le nombre de users est", users)
+        print("Le nombre de users est")
         return users  # je retourne le nombre d'utilisateurs
 
     def load(age):
@@ -64,12 +64,12 @@ class UserDatabase:
     # Pour l'instant, affiche tous les âges des utilisateurs
     # A fin
 
-    def get_age_average(self):
+    def display_age(self):
         print()
         print("Age des utilisateurs dans la base:")
         for u in self.users_list:
             print("age:", u.age)
-        return age_moyen
+
 
     def load(self):
         with open('users.json', 'r') as read_file:
@@ -122,5 +122,5 @@ cnt_users = database.get_nb_users()
 print(cnt_users)
 
 # moyenne d'age utilisateurs
-moy_age = database.get_age_average()
-print(moy_age)
+disp_age = database.display_age()
+print(disp_age)
