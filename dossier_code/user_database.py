@@ -1,7 +1,6 @@
 
 import json
-# with open('users_list.json') as json_data:
-#     print(type(json_data))
+
 
 """
 Déclaration des classes 
@@ -55,54 +54,74 @@ class UserDatabase:
         with open('users.json', 'r') as read_file:
             users_json = json.load(read_file)
             for user in users_json:
-                # Vous ne passiez pas les bons attributs pour créer un utilisateur
-                # (on a besoin uniquement de: id, age, gender, hobbies)
                 self.users_list.append(User(user.get("age")))
 
     # FONCTION EN COURS D'ECRITURE :
     # Pour l'instant, affiche tous les âges des utilisateurs
     # A fin
 
-    def display_age(self):
-        print()
-        print("Age des utilisateurs dans la base:")
-        for u in self.users_list:
-            print("age:", u.age)
+    # def display_age(self):
+    #     print()
+    #     print("Utilisateurs présents dans la base:")
+    #     users_age = []
+    #     while users_age in self.users_list:
+    #         users_age = users_age.append(u.age)
+    #     average = avg
+    #     print(average)
 
-    def get_age_average(self):
-        import statistics
-        with open('users.json', 'r') as read_file:
-            moyenne = statistics.mean()
-        for u in self.users_list:
-
+    def cal_average(self):
+        total = [5,1,4,1]
+        somme = sum(total)
+        moyenne = somme / len(total)
         return moyenne
+
+
+
+    # def get_age_average(self):
+    #     import statistics
+    #     with open('users.json', 'r') as read_file:
+    #         age = []
+    #         datas = json.load(read_file)
+    #         for e in datas:
+    #             age.append(e)
+    #             print(age)
+    #             print()
+    #
+    #      return moyenne
 
     def load(self):
         with open('users.json', 'r') as read_file:
             users_json = json.load(read_file)
             for user in users_json:
-                # Vous ne passiez pas les bons attributs pour créer un utilisateur
-                # (on a besoin uniquement de: id, age, gender, hobbies)
                 self.users_list.append(User(user.get("id"), user.get("age"), user.get("gender"), user.get("hobbies")))
 
     # with open('users.json', 'r') as read_file:
-    #     datas = json.load(read_file)
-    #     for a in datas:
-    #         print(a.get("id"))
-    #     for b in datas:
-    #         print(b.get("nom"))
-    #     for c in datas:
-    #         print(c.get("prenom"))
-    #     for d in datas:
-    #         print(d.get("profession"))
-    #     for e in datas:
-    #         print(e.get("age"))
-    #     for f in datas:
-    #         print(f.get("sexe"))
-    #     for g in datas:
-    #         print(bool(g.get("marie")))
-    #     for h in datas:
-    #         print(h.get("hobbies"))
+    #      datas = json.load(read_file)
+    #      for a in datas:
+    #          print(a.get("id"))
+    #      for b in datas:
+    #          print(b.get("nom"))
+    #      for c in datas:
+    #          print(c.get("prenom"))
+    #      for d in datas:
+    # #
+    # print(d.get("profession"))
+    # #
+    # for e in datas:
+    # #
+    # print(e.get("age"))
+    # #
+    # for f in datas:
+    # #
+    # print(f.get("sexe"))
+    # #
+    # for g in datas:
+    # #
+    # print(bool(g.get("marie")))
+    # #
+    # for h in datas:
+    #
+    # print(h.get("hobbies"))
 
 
 class User:
@@ -127,9 +146,13 @@ database.display()  # affichage du contenu de la variable database (on appelle l
 cnt_users = database.get_nb_users()
 print(cnt_users)
 
-# moyenne d'age utilisateurs
-disp_age = database.display_age()
-print(disp_age)
 
-moyenne_age = database.get_age_average()
-print(moyenne_age)
+print()
+avg_age = database.cal_average()
+print("La moyenne d'âge des utilisateurs est de", avg_age)
+
+# moyenne d'age utilisateurs
+
+# moyenne_age = database.get_age_average()
+# print(moyenne_age)
+
