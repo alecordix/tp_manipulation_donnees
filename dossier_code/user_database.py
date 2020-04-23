@@ -1,4 +1,5 @@
 import json
+
 # with open('users.json') as json_data:
 #     print(type(json_data))
 class UserDatabase:
