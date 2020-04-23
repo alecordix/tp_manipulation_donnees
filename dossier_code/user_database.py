@@ -2,17 +2,25 @@ import json
 
 # with open('users.json') as json_data:
 #     print(type(json_data))
+
+class User:
+    def __init__(self, id, age, gender, hobbies):
+        self.id = id
+        self.age = age
+        self.gender = gender
+        self.hobbies = hobbies
+
 class UserDatabase:
 
     def __init__(self):
         self.users = []  # au départ la liste des utilisateurs est vide, on la remplit en appelant la méthode load()
 
     def get_nb_users(self):
-        liste_users = self.users # la liste des utilisateurs est accessible comme ceci
-        users = 0
-        for users in users.json :
-            users += 1
-        print("Il y a", {self.id}, "utilisateurs dans la liste.")
+        liste_users = self.users
+        nb = 0
+        for nb in users.json:
+            nb += 1
+        print("Le nombre d'utilisateurs est : ", {self.id})
 
     def load(self):
         with open('users.json', 'r') as read_file:
@@ -41,12 +49,7 @@ class UserDatabase:
             print(h.get("hobbies"))
 
 print()
-class User:
-    def __init__(self, id, age, gender, hobbies):
-        self.id = id
-        self.age = age
-        self.gender = gender
-        self.hobbies = hobbies
+
 
 
 """
