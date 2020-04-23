@@ -2,20 +2,23 @@ import json
 # with open('users.json') as json_data:
 #     print(type(json_data))
 class UserDatabase:
-    def __init__(self, users):
-        self.users = users
+
+    def __init__(self):
+        self.users = []  # au départ la liste des utilisateurs est vide, on la remplit en appelant la méthode load()
 
     def get_nb_users(self):
+        liste_users = self.users # la liste des utilisateurs est accessible comme ceci
         users = 0
         for users in users.json :
             users += 1
-        print("Le nombre de users est", {self.id})
+        print("Il y a", {self.id}, "utilisateurs dans la liste.")
 
     def load(self):
         with open('users.json', 'r') as read_file:
             users_json = json.load(read_file)
             for user in users_json:
-                self.users.append(User(user.get("id"), user.get("nom"),user.get("prenom"),user.get("profession"), user.get("age"), user.get("sexe"), user.get("marie"), user.get("hobbies")))
+                # Vous ne passer pas les bons attributs pour créer un utilisateur (on a besoin uniquement de: id, age, gender, hobbies)
+                self.users.append(User(user.get("id"), user.get("age"), user.get("gender"), user.get("hobbies")))
 
     with open('users.json', 'r') as read_file:
         datas = json.load(read_file)
@@ -36,7 +39,7 @@ class UserDatabase:
         for h in datas:
             print(h.get("hobbies"))
 
-
+print()
 class User:
     def __init__(self, id, age, gender, hobbies):
         self.id = id
@@ -44,3 +47,10 @@ class User:
         self.gender = gender
         self.hobbies = hobbies
 
+
+"""
+Code executé
+"""
+database = UserDatabase()
+database.load()
+database.get_nb_users()
