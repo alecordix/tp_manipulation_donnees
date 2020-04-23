@@ -31,17 +31,18 @@ class UserDatabase:
         for u in self.users_list:
             print("{ id:", u.id, ", age:", u.age, ", gender:", u.gender, ", hobbies:", u.hobbies, "}")
 
-    def get_nb_users_old(self):
-        # TODO: à supprimer ==> je laisse le code ici pour vous faire quelques retours
-        users = 0
-        for users in users.json : # ATTENTION à votre nommage: ici users est l'entier déclaré à la ligne précédente (donc il n'a pas d'attribut json)
-            users += 1
-        print("Le nombre de users est", {self.id})  # le mot-clé self permet d'accéder aux attributs de la classe dans laquelle on se trouve (self.id ne fonctionne que si on est à l'intérieur de la classe User)
-        # retourner le nombre d'utilisateurs
-        # (sinon ce ne sera pas possible de faire un test unitaire sur cette méthode)
-        return users
+    # def get_nb_users_old(self):
+    #     # TODO: à supprimer ==> je laisse le code ici pour vous faire quelques retours
+    #     users = 0
+    #     for users in users.json : # ATTENTION à votre nommage: ici users est l'entier déclaré à la ligne précédente (donc il n'a pas d'attribut json)
+    #         users += 1
+    #     print("Le nombre de users est", {self.id})  # le mot-clé self permet d'accéder aux attributs de la classe dans laquelle on se trouve (self.id ne fonctionne que si on est à l'intérieur de la classe User)
+    #     # retourner le nombre d'utilisateurs
+    #     # (sinon ce ne sera pas possible de faire un test unitaire sur cette méthode)
+    #     return users
 
     def get_nb_users(self):
+        print()
         # j'ai apporté les corrections nécessaires pour que votre code fonctionne
         users_list = self.users_list  # liste des utilisateurs présents dans la base
         users = 0
@@ -50,32 +51,52 @@ class UserDatabase:
         print("Le nombre de users est", users)
         return users  # je retourne le nombre d'utilisateurs
 
+    def load(age):
+        with open('users.json', 'r') as read_file:
+            users_json = json.load(read_file)
+            for user in users_json:
+                # Vous ne passiez pas les bons attributs pour créer un utilisateur
+                # (on a besoin uniquement de: id, age, gender, hobbies)
+                self.users_list.append(User(user.get("age")))
+
+
+    # FONCTION EN COURS D'ECRITURE :
+    # Pour l'instant, affiche tous les âges des utilisateurs
+    # A fin
+
+    def get_age_average(self):
+        print()
+        print("Age des utilisateurs dans la base:")
+        for u in self.users_list:
+            print("age:", u.age)
+        return age_moyen
+
     def load(self):
         with open('users.json', 'r') as read_file:
             users_json = json.load(read_file)
             for user in users_json:
                 # Vous ne passiez pas les bons attributs pour créer un utilisateur
                 # (on a besoin uniquement de: id, age, gender, hobbies)
-                self.users_list.append(User(user.get("id"), user.get("age"), user.get("sexe"), user.get("hobbies")))
+                self.users_list.append(User(user.get("id"), user.get("age"), user.get("gender"), user.get("hobbies")))
 
-    with open('users.json', 'r') as read_file:
-        datas = json.load(read_file)
-        for a in datas:
-            print(a.get("id"))
-        for b in datas:
-            print(b.get("nom"))
-        for c in datas:
-            print(c.get("prenom"))
-        for d in datas:
-            print(d.get("profession"))
-        for e in datas:
-            print(e.get("age"))
-        for f in datas:
-            print(f.get("sexe"))
-        for g in datas:
-            print(bool(g.get("marie")))
-        for h in datas:
-            print(h.get("hobbies"))
+    # with open('users.json', 'r') as read_file:
+    #     datas = json.load(read_file)
+    #     for a in datas:
+    #         print(a.get("id"))
+    #     for b in datas:
+    #         print(b.get("nom"))
+    #     for c in datas:
+    #         print(c.get("prenom"))
+    #     for d in datas:
+    #         print(d.get("profession"))
+    #     for e in datas:
+    #         print(e.get("age"))
+    #     for f in datas:
+    #         print(f.get("sexe"))
+    #     for g in datas:
+    #         print(bool(g.get("marie")))
+    #     for h in datas:
+    #         print(h.get("hobbies"))
 
 
 class User:
@@ -99,3 +120,7 @@ database.display()  # affichage du contenu de la variable database (on appelle l
 # nombre d'utilisateurs dans la base "database"
 cnt_users = database.get_nb_users()
 print(cnt_users)
+
+# moyenne d'age utilisateurs
+moy_age = database.get_age_average()
+print(moy_age)
