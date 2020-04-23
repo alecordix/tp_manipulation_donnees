@@ -59,7 +59,6 @@ class UserDatabase:
                 # (on a besoin uniquement de: id, age, gender, hobbies)
                 self.users_list.append(User(user.get("age")))
 
-
     # FONCTION EN COURS D'ECRITURE :
     # Pour l'instant, affiche tous les âges des utilisateurs
     # A fin
@@ -70,6 +69,13 @@ class UserDatabase:
         for u in self.users_list:
             print("age:", u.age)
 
+    def get_age_average(self):
+        import statistics
+        with open('users.json', 'r') as read_file:
+            moyenne = statistics.mean()
+        for u in self.users_list:
+
+        return moyenne
 
     def load(self):
         with open('users.json', 'r') as read_file:
@@ -124,3 +130,6 @@ print(cnt_users)
 # moyenne d'age utilisateurs
 disp_age = database.display_age()
 print(disp_age)
+
+moyenne_age = database.get_age_average()
+print(moyenne_age)
