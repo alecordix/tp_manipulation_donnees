@@ -1,11 +1,10 @@
-
 import json
-
 
 """
 Déclaration des classes 
 (cela revient à créer un nouveau type que l'on pourra utiliser lors de la création de nos variables)
 """
+
 
 class UserDatabase:
 
@@ -30,6 +29,13 @@ class UserDatabase:
         for u in self.users_list:
             print("{ id:", u.id, ", age:", u.age, ", gender:", u.gender, ", hobbies:", u.hobbies, "}")
 
+    def display_age(self):
+        # J'ai ajouté cette méthode pour vous permettre d'afficher le contenu de UserDatabase
+        # (contenu = les utilisateurs présents dans la base)
+        print("L'age des utilisateurs présents dans la base:")
+        for u in self.users_list:
+            print("age:", u.age)
+
     # def get_nb_users_old(self):
     #     # TODO: à supprimer ==> je laisse le code ici pour vous faire quelques retours
     #     users = 0
@@ -50,11 +56,11 @@ class UserDatabase:
         print("Le nombre de users est")
         return users  # je retourne le nombre d'utilisateurs
 
-    def load(age):
-        with open('users.json', 'r') as read_file:
-            users_json = json.load(read_file)
-            for user in users_json:
-                self.users_list.append(User(user.get("age")))
+    # def load(age):
+    #     with open('users.json', 'r') as read_file:
+    #         users_json = json.load(read_file)
+    #         for user in users_json:
+    #             self.users_list.append(User(user.get("age")))
 
     # FONCTION EN COURS D'ECRITURE :
     # Pour l'instant, affiche tous les âges des utilisateurs
@@ -70,12 +76,15 @@ class UserDatabase:
     #     print(average)
 
     def cal_average(self):
-        total = [5,1,4,1]
-        somme = sum(total)
-        moyenne = somme / len(total)
+
+        for u in self.users_list:
+            total = [u.age]
+            somme = sum(total)
+            moyenne = somme / len(total)
+            # pour voir où ça beug
+            print(len(total))
+            print(sum(total))
         return moyenne
-
-
 
     # def get_age_average(self):
     #     import statistics
@@ -138,6 +147,7 @@ Code executé
 
 # création d'une base de données
 empty_list = []
+empty_list_age = []
 database = UserDatabase(empty_list)  # création d'une variable database de type UserDatabase, la base est vide au départ
 database.load()  # chargement du Json dans la variable database (on ajoute tous les utilisateurs à la liste database.users_list)
 database.display()  # affichage du contenu de la variable database (on appelle la méthode display)
@@ -146,13 +156,14 @@ database.display()  # affichage du contenu de la variable database (on appelle l
 cnt_users = database.get_nb_users()
 print(cnt_users)
 
+# l'age des utilisateurs dans la base
+print()
+age_user = database.display_age()
 
 print()
 avg_age = database.cal_average()
-print("La moyenne d'âge des utilisateurs est de", avg_age)
-
+print("La moyenne d'age est : ", avg_age)
 # moyenne d'age utilisateurs
 
 # moyenne_age = database.get_age_average()
 # print(moyenne_age)
-
