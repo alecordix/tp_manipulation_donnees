@@ -76,6 +76,7 @@ class UserDatabase:
     #     print(average)
 
     def cal_average(self):
+
         for u in self.users_list:
             total = []
             for u in self.users_list:
@@ -89,6 +90,14 @@ class UserDatabase:
         print("Il y a", len(total),"utilisateurs qui ont rentré leur âge")
         print("La somme des âges est de :", sum(total))
         return moyenne
+
+    def get_top_3_hobbies(self):
+        for u in self.users_list:
+            tot_hobbies = []
+            for u in self.users_list:
+                tot_hobbies.append(u.hobbies)
+        tot_hobbies.sort()
+        return tot_hobbies
 
     # def get_age_average(self):
     #     import statistics
@@ -151,6 +160,7 @@ Code executé
 
 # création d'une base de données
 empty_list = []
+empty_list_age = []
 database = UserDatabase(empty_list)  # création d'une variable database de type UserDatabase, la base est vide au départ
 database.load()  # chargement du Json dans la variable database (on ajoute tous les utilisateurs à la liste database.users_list)
 database.display()  # affichage du contenu de la variable database (on appelle la méthode display)
@@ -166,6 +176,11 @@ age_user = database.display_age()
 print()
 avg_age = database.cal_average()
 print("La moyenne d'age est :", avg_age)
+
+
+print()
+best_hobbies = database.get_top_3_hobbies()
+print("La liste des hobbies est :", best_hobbies)
 # moyenne d'age utilisateurs
 
 # moyenne_age = database.get_age_average()
