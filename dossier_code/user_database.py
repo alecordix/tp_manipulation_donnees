@@ -63,7 +63,7 @@ class UserDatabase:
             for u in self.users_list:
                 total.append(u.age)
                 for u in total:
-                    if type(u) is not int :
+                    if type(u) is not int:
                         total.remove(u)
         print(total)
         somme = sum(total)
@@ -90,6 +90,17 @@ class UserDatabase:
                 if (u.sexe == 'homme' or u.sexe =='Homme') and (u.age >= 25 and u.age <= 30) and ('cinema' or 'Cinema' in u.hobbies):
                     tot_ids.append(u.id)
             return tot_ids
+
+    def get_random_users(self):
+        import random
+        import collections
+        tot_ids = []
+        x = random.randint(1,len(self.users_list))
+        print(x)
+        for u in self.users_list:
+            tot_ids.append(u.id)
+        result= random.sample(tot_ids, x)
+        return result
 
 
     def load(self):
@@ -170,7 +181,8 @@ print("La liste des hobbies est :", best_hobbies)
 print()
 id_male_cinema = database.compute_segmentation()
 print("Les id des hommes de 25 à 30 ans inclus et qui aiment le cinema sont:", id_male_cinema)
-# moyenne d'age utilisateurs
 
-# moyenne_age = database.get_age_average()
-# print(moyenne_age)
+# selection
+print()
+random_users = database.get_random_users()
+print(random_users)
