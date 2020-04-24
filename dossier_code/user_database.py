@@ -79,11 +79,14 @@ class UserDatabase:
 
         for u in self.users_list:
             total = [u.age]
-            somme = sum(total)
-            moyenne = somme / len(total)
-            # pour voir où ça beug
-            print(len(total))
-            print(sum(total))
+            for u in self.users_list:
+                total.append(u.age)
+            supp_elem_1 = total.pop(0)
+        print(total)
+        somme = sum(total)
+        moyenne = somme / len(total)
+        print("Il y a", len(total),"utilisateurs")
+        print("La somme des âges est de :", sum(total))
         return moyenne
 
     # def get_age_average(self):
@@ -162,7 +165,7 @@ age_user = database.display_age()
 
 print()
 avg_age = database.cal_average()
-print("La moyenne d'age est : ", avg_age)
+print("La moyenne d'age est :", avg_age)
 # moyenne d'age utilisateurs
 
 # moyenne_age = database.get_age_average()
