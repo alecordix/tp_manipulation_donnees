@@ -176,7 +176,7 @@ age_user = database.display_age()
 print()
 avg_age = database.cal_average()
 print("La moyenne d'age est :", avg_age)
-
+d
 
 print()
 best_hobbies = database.get_top_3_hobbies()
