@@ -56,25 +56,6 @@ class UserDatabase:
         print("Le nombre de users est")
         return users  # je retourne le nombre d'utilisateurs
 
-    # def load(age):
-    #     with open('users.json', 'r') as read_file:
-    #         users_json = json.load(read_file)
-    #         for user in users_json:
-    #             self.users_list.append(User(user.get("age")))
-
-    # FONCTION EN COURS D'ECRITURE :
-    # Pour l'instant, affiche tous les âges des utilisateurs
-    # A fin
-
-    # def display_age(self):
-    #     print()
-    #     print("Utilisateurs présents dans la base:")
-    #     users_age = []
-    #     while users_age in self.users_list:
-    #         users_age = users_age.append(u.age)
-    #     average = avg
-    #     print(average)
-
     def cal_average(self):
 
         for u in self.users_list:
@@ -101,18 +82,6 @@ class UserDatabase:
         populaire = collections.Counter(low).most_common(3)
         return populaire
 
-
-    # def get_age_average(self):
-    #     import statistics
-    #     with open('users.json', 'r') as read_file:
-    #         age = []
-    #         datas = json.load(read_file)
-    #         for e in datas:
-    #             age.append(e)
-    #             print(age)
-    #             print()
-    #
-    #      return moyenne
 
     def load(self):
         with open('users.json', 'r') as read_file:
