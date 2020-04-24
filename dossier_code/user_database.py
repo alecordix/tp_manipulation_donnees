@@ -92,14 +92,15 @@ class UserDatabase:
         return moyenne
 
     def get_top_3_hobbies(self):
+        import collections
         for u in self.users_list:
             tot_hobbies = []
             for u in self.users_list:
                 tot_hobbies.extend(u.hobbies)
-        count = tot_hobbies.count()
-        tot_hobbies.sort()
-        print(count)
-        return tot_hobbies
+        low = [x.lower() for x in tot_hobbies]
+        populaire = collections.Counter(low).most_common(3)
+        return populaire
+
 
     # def get_age_average(self):
     #     import statistics
