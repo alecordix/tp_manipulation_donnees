@@ -82,13 +82,15 @@ class UserDatabase:
         populaire = collections.Counter(low).most_common(3)
         return populaire
 
+
     def compute_segmentation(self):
         for u in self.users_list:
             tot_ids = []
             for u in self.users_list:
-                if (u.sexe == "homme") :
+                if (u.sexe == 'homme' or u.sexe =='Homme') and (u.age >= 25 and u.age <= 30) and ('cinema' or 'Cinema' in u.hobbies):
                     tot_ids.append(u.id)
             return tot_ids
+
 
     def load(self):
         with open('users.json', 'r') as read_file:
@@ -140,7 +142,6 @@ Code executé
 # création d'une base de données
 empty_list = []
 empty_list_age = []
-empty_list_age_male = []
 database = UserDatabase(empty_list)  # création d'une variable database de type UserDatabase, la base est vide au départ
 database.load()  # chargement du Json dans la variable database (on ajoute tous les utilisateurs à la liste database.users_list)
 database.display()  # affichage du contenu de la variable database (on appelle la méthode display)
@@ -153,6 +154,10 @@ print(cnt_users)
 print()
 age_user = database.display_age()
 
+#le sexe des utilisateurs dans la base
+print()
+age_user = database.display_age()
+
 print()
 avg_age = database.cal_average()
 print("La moyenne d'age est :", avg_age)
@@ -161,11 +166,11 @@ print()
 best_hobbies = database.get_top_3_hobbies()
 print("La liste des hobbies est :", best_hobbies)
 
+
 print()
-segment = database.compute_segmentation()
-print("Les hommes cinéphiles etre 20 et 30 ans :", segment)
+id_male_cinema = database.compute_segmentation()
+print("Les id des hommes de 25 à 30 ans inclus et qui aiment le cinema sont:", id_male_cinema)
 # moyenne d'age utilisateurs
 
 # moyenne_age = database.get_age_average()
 # print(moyenne_age)
-d
