@@ -81,11 +81,14 @@ class UserDatabase:
             total = [u.age]
             for u in self.users_list:
                 total.append(u.age)
+                for u in total:
+                    if type(u) is not int :
+                        total.remove(u)
             supp_elem_1 = total.pop(0)
         print(total)
         somme = sum(total)
         moyenne = somme / len(total)
-        print("Il y a", len(total),"utilisateurs")
+        print("Il y a", len(total),"utilisateurs qui ont rentré leur âge")
         print("La somme des âges est de :", sum(total))
         return moyenne
 
