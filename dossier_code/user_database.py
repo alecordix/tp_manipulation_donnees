@@ -168,3 +168,4 @@ print("Les hommes cinéphiles etre 20 et 30 ans :", segment)
 
 # moyenne_age = database.get_age_average()
 # print(moyenne_age)
+d
