@@ -27,7 +27,7 @@ class UserDatabase:
         # (contenu = les utilisateurs présents dans la base)
         print("Utilisateurs présents dans la base:")
         for u in self.users_list:
-            print("{ id:", u.id, ", age:", u.age, ", gender:", u.gender, ", hobbies:", u.hobbies, "}")
+            print("{ id:", u.id, ", age:", u.age, ", sexe:", u.sexe, ", hobbies:", u.hobbies, "}")
 
     def display_age(self):
         # J'ai ajouté cette méthode pour vous permettre d'afficher le contenu de UserDatabase
@@ -83,11 +83,20 @@ class UserDatabase:
         return populaire
 
 
+    def compute_segmentation(self):
+        for u in self.users_list:
+            tot_ids = []
+            for u in self.users_list:
+                if (u.sexe == 'homme' or u.sexe =='Homme') and (u.age >= 25 and u.age <= 30) and ('cinema' or 'Cinema' in u.hobbies):
+                    tot_ids.append(u.id)
+            return tot_ids
+
+
     def load(self):
         with open('users.json', 'r') as read_file:
             users_json = json.load(read_file)
             for user in users_json:
-                self.users_list.append(User(user.get("id"), user.get("age"), user.get("gender"), user.get("hobbies")))
+                self.users_list.append(User(user.get("id"), user.get("age"), user.get("sexe"), user.get("hobbies")))
 
     # with open('users.json', 'r') as read_file:
     #      datas = json.load(read_file)
@@ -119,10 +128,10 @@ class UserDatabase:
 
 
 class User:
-    def __init__(self, id, age, gender, hobbies):
+    def __init__(self, id, age, sexe, hobbies):
         self.id = id
         self.age = age
-        self.gender = gender
+        self.sexe = sexe
         self.hobbies = hobbies
 
 
@@ -145,6 +154,10 @@ print(cnt_users)
 print()
 age_user = database.display_age()
 
+#le sexe des utilisateurs dans la base
+print()
+age_user = database.display_age()
+
 print()
 avg_age = database.cal_average()
 print("La moyenne d'age est :", avg_age)
@@ -152,6 +165,11 @@ print("La moyenne d'age est :", avg_age)
 print()
 best_hobbies = database.get_top_3_hobbies()
 print("La liste des hobbies est :", best_hobbies)
+
+
+print()
+id_male_cinema = database.compute_segmentation()
+print("Les id des hommes de 25 à 30 ans inclus et qui aiment le cinema sont:", id_male_cinema)
 # moyenne d'age utilisateurs
 
 # moyenne_age = database.get_age_average()
