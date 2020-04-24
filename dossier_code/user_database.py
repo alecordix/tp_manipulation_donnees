@@ -76,15 +76,13 @@ class UserDatabase:
     #     print(average)
 
     def cal_average(self):
-
         for u in self.users_list:
-            total = [u.age]
+            total = []
             for u in self.users_list:
                 total.append(u.age)
                 for u in total:
                     if type(u) is not int :
                         total.remove(u)
-            supp_elem_1 = total.pop(0)
         print(total)
         somme = sum(total)
         moyenne = somme / len(total)
@@ -153,7 +151,6 @@ Code executé
 
 # création d'une base de données
 empty_list = []
-empty_list_age = []
 database = UserDatabase(empty_list)  # création d'une variable database de type UserDatabase, la base est vide au départ
 database.load()  # chargement du Json dans la variable database (on ajoute tous les utilisateurs à la liste database.users_list)
 database.display()  # affichage du contenu de la variable database (on appelle la méthode display)
