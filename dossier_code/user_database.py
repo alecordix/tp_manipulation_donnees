@@ -95,8 +95,10 @@ class UserDatabase:
         for u in self.users_list:
             tot_hobbies = []
             for u in self.users_list:
-                tot_hobbies.append(u.hobbies)
+                tot_hobbies.extend(u.hobbies)
+        count = tot_hobbies.count()
         tot_hobbies.sort()
+        print(count)
         return tot_hobbies
 
     # def get_age_average(self):
@@ -176,7 +178,6 @@ age_user = database.display_age()
 print()
 avg_age = database.cal_average()
 print("La moyenne d'age est :", avg_age)
-d
 
 print()
 best_hobbies = database.get_top_3_hobbies()
